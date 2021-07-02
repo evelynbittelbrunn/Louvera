@@ -50,3 +50,65 @@
     padding: 10px 0;
     font-size: 1.4em;
 }
+
+/* SLIDE */
+
+.carousel {
+    position: relative;    
+    height: 578px;
+    width: 100%;
+    /*background-color: red;*/
+  }
+
+  
+  .slides {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    top: 0;
+    /*background-color: purple;*/ 
+  }
+  
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    font-size: 3em;
+    color: white;
+    /*line-height: 400px;*/
+    text-align: center;
+    opacity: 0;
+    transition: opacity 700ms;
+  }
+  
+  .slide:nth-child(1) {
+      /*background-color: red;*/
+      opacity: 1;
+      background-image: url(../img/oleo[.jpg)
+  }
+  
+  .slide:nth-child(3) {
+      /*background-color: green;*/
+      background-image: url(../img/limao.jpg);
+  }
+  /*
+  .slide:nth-child(3) {
+      background-color: blue;
+  }
+  */
+  .slide[data-state=active] {
+    display: block;
+  }
+  
+  .indicators {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .indicator {
+      cursor: pointer;
+  }
