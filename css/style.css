@@ -89,7 +89,6 @@ header svg{
     display: flex;
     justify-content: center;
     border-bottom: 1px solid black;
-    margin-bottom: 50px;
     transition:top 0.5s ease;
     transition: background-color 0.5s ease;
 }
@@ -171,7 +170,7 @@ header svg{
     margin-left: 20px;
 }
 
-.cores span{
+.cores a{
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -179,17 +178,19 @@ header svg{
     margin-left: 10px;
 }
 
-.cores span:nth-child(2){
+
+.cores a:nth-child(2){
     background-color: lightskyblue;
 }
 
-.cores span:nth-child(3){
+.cores a:nth-child(3){
     background-color: mediumpurple;
 }
 
-.cores span:nth-child(4){
+.cores a:nth-child(4){
     background-color: mediumseagreen;
 }
+
 
 @media screen and (max-width: 960px) {
     .filtro{
@@ -214,6 +215,17 @@ main{
     margin: 0 auto;
     padding-bottom: 20px;
     position: relative;
+    animation: cards 1s;
+}
+
+@keyframes cards {
+    from{
+        transform: translate3d(0, 10px, 0);
+    }
+
+    to{
+        transform: translate3d(0, 0, 0);
+    }
 }
 
 .card img{
