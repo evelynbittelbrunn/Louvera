@@ -1,5 +1,8 @@
 <?php
     include('Controller/functionModal.php');
+    
+    include('Controller/functionMontaListaProdutos.php');
+    $_SESSION['listaProdutos'] = montaListaProdutos();
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -64,101 +67,7 @@
         </div>
         <main>
             <div class="catalogo">
-                <div class="card">
-                    <img src="img/produtos/bromelia-pequeno.jpg" alt="Casaco verde">
-                    <!--<i class="far fa-heart"></i>-->
-                    <i class="far fa-heart"></i>
-                    <div class="card-bottom">
-                        <h4>CALÇA SLIM COM PREGAS E AMARRAÇÃO NA BARRA</h4>
-                        <div class="card-preco">
-                            <span>R$ 800,00</span>
-                        </div>
-                    </div>
-                </div>
-
-                
-                <div class="card">
-                    <a href="#" onclick="iniciaModal('modal-produto')">
-                        <img src="img/produtos/locao.webp" alt="Casaco verde">
-                        <!--<i class="far fa-heart"></i>-->
-                        
-                        <div class="card-bottom">
-                            <h4>CALÇA SLIM COM PREGAS E AMARRAÇÃO NA BARRA</h4>
-                            <div class="card-preco">
-                                <span>R$ 800,00</span>
-                            </div>
-                        </div>
-                    </a>
-                    <i class="far fa-heart" onclick="functionFavorito()" id="um"></i>                        
-                </div>
-            
-                
-                <div class="card">
-                    <img src="img/produtos/livre.webp" alt="Casaco verde">
-                    <!--<i class="far fa-heart"></i>-->
-                    <i class="far fa-heart"></i>
-                    <div class="card-bottom">
-                        <h4>CALÇA SLIM COM PREGAS E AMARRAÇÃO NA BARRA</h4>
-                        <div class="card-preco">
-                            <span>R$ 800,00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="img/produtos/bromelia-pequeno.jpg" alt="Casaco verde">
-                    <!--<i class="far fa-heart"></i>-->
-                    <i class="far fa-heart"></i>
-                    <div class="card-bottom">
-                        <h4>CALÇA SLIM COM PREGAS E AMARRAÇÃO NA BARRA</h4>
-                        <div class="card-preco">
-                            <span>R$ 800,00</span>
-                        </div>
-                    </div>
-                </div>                
-                <div class="card">
-                    <img src="img/produtos/bromelia-pequeno.jpg" alt="Casaco verde">
-                    <!--<i class="far fa-heart"></i>-->
-                    <i class="far fa-heart"></i>
-                    <div class="card-bottom">
-                        <h4>CALÇA SLIM COM PREGAS E AMARRAÇÃO NA BARRA</h4>
-                        <div class="card-preco">
-                            <span>R$ 800,00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="img/produtos/locao.webp" alt="Casaco verde">
-                    <!--<i class="far fa-heart"></i>-->
-                    <i class="fas fa-heart" id="dois"></i>
-                    <div class="card-bottom">
-                        <h4>CALÇA SLIM COM PREGAS E AMARRAÇÃO NA BARRA</h4>
-                        <div class="card-preco">
-                            <span>R$ 800,00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="img/roupa.jpg" alt="Casaco verde">
-                    <!--<i class="far fa-heart"></i>-->
-                    <i class="far fa-heart"></i>
-                    <div class="card-bottom">
-                        <h4>CALÇA SLIM COM PREGAS E AMARRAÇÃO NA BARRA</h4>
-                        <div class="card-preco">
-                            <span>R$ 800,00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="img/produtos/bromelia-pequeno.jpg" alt="Casaco verde">
-                    <!--<i class="far fa-heart"></i>-->
-                    <i class="far fa-heart"></i>
-                    <div class="card-bottom">
-                        <h4>CALÇA SLIM COM PREGAS E AMARRAÇÃO NA BARRA</h4>
-                        <div class="card-preco">
-                            <span>R$ 800,00</span>
-                        </div>
-                    </div>
-                </div>
+                <?php echo $_SESSION['listaProdutos'];?>
             </div>
         </main>
     </div>
