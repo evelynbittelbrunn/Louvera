@@ -21,10 +21,10 @@ function montaListaProdutos(){
         foreach ($array as $campo) {
 
             $lista .=  '<div class="card">'
-                            .'<img src="img/produtos/livre.webp" alt="Casaco verde">'
+                            .'<img src="'.$campo['FotoExibicao'].'" alt="Casaco verde">'
                             .'<i class="far fa-heart"></i>'
                             .'<div class="card-bottom">'
-                                .'<h4>CALÇA SLIM COM PREGAS E AMARRAÇÃO NA BARRA</h4>'
+                                .'<h4>'.$campo['TituloProduto'].'</h4>'
                                 .'<div class="card-preco">'
                                     .'<span>R$'.$campo['Preco'].'</span>'
                                 .'</div>'
