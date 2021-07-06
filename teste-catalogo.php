@@ -2,7 +2,6 @@
     include('Controller/functionModal.php');
     
     include('Controller/functionMontaListaProdutos.php');
-    $_SESSION['listaProdutos'] = montaListaProdutos();
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -26,7 +25,7 @@
                 <div class="header-icone">
                     <span class="header-search">
                         <input type="text" name="" placeholder="Buscar por produto" id="">
-                        <a href=""><svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-search fa-w-16 fa-2x"><path fill="currentColor" d="M508.5 481.6l-129-129c-2.3-2.3-5.3-3.5-8.5-3.5h-10.3C395 312 416 262.5 416 208 416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c54.5 0 104-21 141.1-55.2V371c0 3.2 1.3 6.2 3.5 8.5l129 129c4.7 4.7 12.3 4.7 17 0l9.9-9.9c4.7-4.7 4.7-12.3 0-17zM208 384c-97.3 0-176-78.7-176-176S110.7 32 208 32s176 78.7 176 176-78.7 176-176 176z" class=""></path></svg></a>
+                        <a href="#"><svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-search fa-w-16 fa-2x"><path fill="currentColor" d="M508.5 481.6l-129-129c-2.3-2.3-5.3-3.5-8.5-3.5h-10.3C395 312 416 262.5 416 208 416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c54.5 0 104-21 141.1-55.2V371c0 3.2 1.3 6.2 3.5 8.5l129 129c4.7 4.7 12.3 4.7 17 0l9.9-9.9c4.7-4.7 4.7-12.3 0-17zM208 384c-97.3 0-176-78.7-176-176S110.7 32 208 32s176 78.7 176 176-78.7 176-176 176z" class=""></path></svg></a>
                     </span>                    
                     <a href=""><svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-heart fa-w-16 fa-2x"><path fill="currentColor" d="M462.3 62.7c-54.5-46.4-136-38.7-186.6 13.5L256 96.6l-19.7-20.3C195.5 34.1 113.2 8.7 49.7 62.7c-62.8 53.6-66.1 149.8-9.9 207.8l193.5 199.8c6.2 6.4 14.4 9.7 22.6 9.7 8.2 0 16.4-3.2 22.6-9.7L472 270.5c56.4-58 53.1-154.2-9.7-207.8zm-13.1 185.6L256.4 448.1 62.8 248.3c-38.4-39.6-46.4-115.1 7.7-161.2 54.8-46.8 119.2-12.9 142.8 11.5l42.7 44.1 42.7-44.1c23.2-24 88.2-58 142.8-11.5 54 46 46.1 121.5 7.7 161.2z" class=""></path></svg></a>
                     <a href=""><svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="shopping-bag" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-shopping-bag fa-w-14 fa-2x"><path fill="currentColor" d="M352 128C352 57.421 294.579 0 224 0 153.42 0 96 57.421 96 128H0v304c0 44.183 35.817 80 80 80h288c44.183 0 80-35.817 80-80V128h-96zM224 32c52.935 0 96 43.065 96 96H128c0-52.935 43.065-96 96-96zm192 400c0 26.467-21.533 48-48 48H80c-26.467 0-48-21.533-48-48V160h64v48c0 8.837 7.164 16 16 16s16-7.163 16-16v-48h192v48c0 8.837 7.163 16 16 16s16-7.163 16-16v-48h64v272z" class=""></path></svg></a>
@@ -67,12 +66,14 @@
         </div>
         <main>
             <div class="catalogo">
-                <?php echo $_SESSION['listaProdutos'];?>
+                <?php echo montaListaProdutos();?>
             </div>
         </main>
     </div>
 
-    
+    <?php// echo $_SESSION['idModal'][];?>
+
+<!--   
     <div id="modal-produto" class="modal-container">
         <div class="modal">
             <button class="fechar">X</button>
@@ -114,6 +115,10 @@
 
     </div>
     
+    -->
+
+    <div id="modal-produto" class="modal-container">
+    </div>
 
     <!-- FONT AWESOME -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/svg-with-js.min.css"></script>
@@ -177,8 +182,23 @@
 
         // MODAL
 
-        function iniciaModal(modalID) {
+        function iniciaModal(modalID,idProduto) {
+
             const modal = document.getElementById(modalID);
+
+            $.ajax({
+                
+                url: "ajax/load-modal.php?id="+idProduto,
+                success: function(result){
+                    $(".modal-container").html(result);
+                    
+                },
+                error: function(){
+                    $(".modal-container").html("OI");
+                    
+                }            
+            });
+
             modal.classList.add('mostrar');
             modal.addEventListener('click', (e) => {
                 if(e.target.id == modalID || e.target.className == 'fechar'){
@@ -189,16 +209,16 @@
 
         // TROCAR IMAGEM
 
-        function img01() {
-            document.getElementById('trocarImg').src='img/produtos/grande.webp';
+        function img01(imagem01) {
+            document.getElementById('trocarImg').src=imagem01;
         }
 
-        function img02() {
-            document.getElementById('trocarImg').src='img/produtos/grande-2.webp';
+        function img02(imagem02) {
+            document.getElementById('trocarImg').src=imagem02;
         }
 
-        function img03() {
-            document.getElementById('trocarImg').src='img/produtos/grande-3.webp';
+        function img03(imagem03) {
+            document.getElementById('trocarImg').src=imagem03;
         }
         
     </script>
