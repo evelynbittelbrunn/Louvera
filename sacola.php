@@ -1,3 +1,10 @@
+<?php
+    include('Controller/functionModal.php');
+    include('Controller/geraPesquisaNovo.php');
+    include('Controller/functionMontaListaProdutos.php');
+    include('Controller/functionMontaListaCarrinho.php');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -37,38 +44,7 @@
             <div class="container-sacola">
                 <div class="produtos-sacola">
                     <h4>Minha sacola</h4>
-                    <div class="card-produto-sacola">
-                        <img src="img/produtos/livre.webp" alt="">
-                        <div class="descricao-produto-sacola">
-                            <div class="texto-sacola">
-                                <p>BIOSSANCE ÔMEGA CREME REPARADOR COM ESQUALANO</p>
-                                <p>R$ 300,99</p>
-                                <p>150 ml</p>
-                                <div class="quantidade-sacola">
-                                    <button>-</button>
-                                    <span>1</span>
-                                    <button>+</button>
-                                </div>
-                            </div>
-                            <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-times fa-w-10 fa-2x"><path fill="currentColor" d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z" class=""></path></svg>
-                        </div>
-                    </div>
-                    <div class="card-produto-sacola">
-                        <img src="img/produtos/bromelia.jpg" alt="">
-                        <div class="descricao-produto-sacola">
-                            <div class="texto-sacola">
-                                <p>BIOSSANCE ÔMEGA CREME REPARADOR COM ESQUALANO</p>
-                                <p>R$ 300,99</p>
-                                <p>150 ml</p>
-                                <div class="quantidade-sacola">
-                                    <button>-</button>
-                                    <span>1</span>
-                                    <button>+</button>
-                                </div>
-                            </div>
-                            <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-times fa-w-10 fa-2x"><path fill="currentColor" d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z" class=""></path></svg>
-                        </div>
-                    </div>
+                    <?php echo montaListaCarrinho();?>
                 </div>
                 <div class="resumo-sacola">
                     <h4>Resumo da compra</h4>
@@ -79,13 +55,13 @@
                                 <span>Cupom</span>
                             </div>
                             <div>
-                                <span>R$ 399,99</span>
-                                <span>R$ 0,00</span>
+                                <span>R$ <?php echo somaPreco();?></span>
+                                <span>R$ 00,00</span>
                             </div>
                         </div>
                         <div class="resumo-total-sacola">
                             <span>Total</span>
-                            <span>R$ 399,99</span>
+                            <span>R$ <?php echo somaPreco();?></span>
                         </div>
                         <div class="botao-resumo-sacola">
                             <button>Confirmar</button>
