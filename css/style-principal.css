@@ -4,6 +4,10 @@
     text-align: center;
 }
 
+.section-produtos-principal h1{
+    line-height: 100px;
+}
+
 .container-produtos-principal{
     width: 90%;
     display: grid;
@@ -23,6 +27,7 @@
 .principios{
     background-color: #FAEBD7;
     text-align: center;
+    margin-top: 50px;
 }
 
 .principios h1{

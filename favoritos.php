@@ -46,6 +46,7 @@
                 </div>
             </div>
         </header>
+        <!--
         <div class="filtro">
             <select name="" id="preco">
                 <option value="">Ordenar por</option>
@@ -71,9 +72,10 @@
                 <a href="#" class="filtro-cor" id="verde"></a>
             </div>
         </div>
-        <main>
+        -->
+        <main style="margin-top: 160px;">
             <div class="catalogo">
-                <?php echo montaListaProdutos($_POST['nPesquisa']);?>
+                <?php echo montaListaProdutosFavoritos();?>
             </div>
         </main>
     </div>
@@ -139,54 +141,73 @@
 
     <script>
 
-    // FUNÇÃO FAVORITO
-    function functionFavorito(id) {
+        // FUNÇÃO FAVORITO
+        function functionFavorito(id) {
 
-        var icone = document.getElementById(id);
-
-        if(icone.classList[0] == "far"){
-
-            icone.style.color = "#FF6347";
-
-            icone.classList.remove('far','fa-heart');
-            icone.classList.add('fas','fa-heart');
-
-            $.ajax({
+            var icone = document.getElementById(id);
             
-                url: "ajax/load-favoritar.php?tipo=inserir&id="+id,
-                success: function(result){
-                    
-                },
-                error: function(){
-                    $(".catalogo").html("OI");
-                    
-                }            
-            });
+            if(icone.classList[0] == "far"){
 
-            console.log(icone.classList);
-        }else{
+                icone.style.color = "#FF6347";
 
-            icone.style.color = "#F5F5DC";
+                icone.classList.remove('far','fa-heart');
+                icone.classList.add('fas','fa-heart');
 
-            icone.classList.remove('fas','fa-heart');
-            icone.classList.add('far','fa-heart');
+                $.ajax({
+                
+                    url: "ajax/load-favoritar.php?tipo=inserir&id="+id,
+                    success: function(result){
+                        $(".catalogo").html(result);
+                        
+                    },
+                    error: function(){
+                        $(".catalogo").html("OI");
+                        
+                    }            
+                });
 
-            $.ajax({
-            
-                url: "ajax/load-favoritar.php?tipo=remover&id="+id,
-                success: function(result){
-                    
-                },
-                error: function(){
-                    $(".catalogo").html("OI");
-                    
-                }            
-            });
+                console.log(icone.classList);
+            }else{
 
-            console.log(icone.classList);
+                icone.style.color = "#F5F5DC";
+
+                icone.classList.remove('fas','fa-heart');
+                icone.classList.add('far','fa-heart');
+
+                $.ajax({
+                
+                    url: "ajax/load-favoritar.php?tipo=remover&id="+id,
+                    success: function(result){
+                        $(".catalogo").html(result);
+                        
+                    },
+                    error: function(){
+                        $(".catalogo").html("OI");
+                        
+                    }            
+                });
+
+                console.log(icone.classList);
+            }
+
         }
 
-    }
+        function functionDesfavoritar(id){
+
+            $.ajax({
+                
+                url: "ajax/load-desfavoritar.php?id="+id,
+                success: function(result){
+                    $(".catalogo").html(result);
+                    
+                },
+                error: function(){
+                    $(".catalogo").html("OI");
+                    
+                }            
+            });
+
+        }
 
         // TRANSIÇÃO MENU 
         $(document).ready(function(){

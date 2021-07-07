@@ -267,13 +267,21 @@ main{
     font-size: .80em;
 }
 
-.card i{
+.card i, .close{
     position: absolute;
     top: 2%;
     right: 3%;
     display: inline-block;
     color: #F5F5DC;
     font-size: 1.5em;
+}
+
+.fas{
+    color: #FF6347;
+}
+
+.far{
+    color: #F5F5DC;
 }
 
 #dois{

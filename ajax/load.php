@@ -25,6 +25,15 @@ switch ($tipo) {
 
 if($sql->rowCount() > 0){
     foreach($sql->fetchAll() as $value){
+
+        if($value['FlgFavorito'] == 'S'){
+            $classe =  '"fas fa-heart"';
+            $style  =  'style="color: #FF6347;"';
+        }else{
+            $classe =  '"far fa-heart"';
+            $style  =  'style="color: #F5F5DC;"';
+        }
+
         echo '
 
         <div class="card">
@@ -37,7 +46,7 @@ if($sql->rowCount() > 0){
                     </div>
                 </div>
             </a>
-            <i class="far fa-heart" onclick="functionFavorito('.$value['idProduto'].')" id="'.$value['idProduto'].'"></i>                        
+            <i class='.$classe.' onclick="functionFavorito('.$value['idProduto'].')" '.$style.' id="'.$value['idProduto'].'"></i>                        
         </div>
 
         ';
