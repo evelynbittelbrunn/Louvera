@@ -29,11 +29,14 @@ $(function(){
                 
             },
             error: function(){
-                $(".result").html("OI");
+                $(".result").html("Error");
                 
             }            
         });
 
     })
+
+    
+
 })
 

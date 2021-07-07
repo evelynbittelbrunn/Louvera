@@ -2,6 +2,8 @@
 
 require 'connection.php';
 
+include('functionModal');
+
 $tipo = $_GET['tipo'];
 $id   = $_GET['filtro'];
 
@@ -26,7 +28,7 @@ if($sql->rowCount() > 0){
         echo '
 
         <div class="card">
-            <a href="#" onclick=iniciaModal("modal-produto")>
+            <a href="#" onclick=iniciaModal("modal-produto","'.$value['idProduto'].'")>
                 <img src="'.$value['FotoExibicao'].'" alt="'.$value['TituloProduto'].'">
                 <div class="card-bottom">
                     <h4>'.$value['TituloProduto'].'</h4>
@@ -37,7 +39,7 @@ if($sql->rowCount() > 0){
             </a>
             <i class="far fa-heart" onclick="functionFavorito('.$value['idProduto'].')" id="'.$value['idProduto'].'"></i>                        
         </div>
-    
+
         ';
 
     }

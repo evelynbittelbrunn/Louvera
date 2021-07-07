@@ -22,16 +22,21 @@ function montaListaProdutos($pesquisa){
     
         foreach ($array as $campo) {
 
-            $lista .=  '<div class="card">'
-                                .'<img src="'.$campo['FotoExibicao'].'" alt="Casaco verde">'
-                                .'<i class="far fa-heart"></i>'
-                                .'<div class="card-bottom">'
-                                    .'<h4>'.$campo['TituloProduto'].'</h4>'
-                                    .'<div class="card-preco">'
-                                        .'<span>R$'.$campo['Preco'].'</span>'
-                                    .'</div>'
-                                .'</div>'
-                            .'</div>';
+            $lista .= 
+            
+            '<div class="card">'
+                .'<a href="#" onclick=iniciaModal("modal-produto","'.$campo['idProduto'].'")>'
+                    .'<img src="'.$campo['FotoExibicao'].'" alt="'.$campo['TituloProduto'].'">'
+                    .'<div class="card-bottom">'
+                        .'<h4>'.$campo['TituloProduto'].'</h4>'
+                        .'<div class="card-preco">'
+                            .'<span>R$ '.$campo['Preco'].'</span>'
+                        .'</div>'
+                    .'</div>'
+                .'</a>'
+                .'<i class="far fa-heart" onclick="functionFavorito('.$campo['idProduto'].')" id="'.$campo['idProduto'].'"></i>'                
+            .'</div>';
+
         }
 
     }else{
