@@ -56,12 +56,20 @@
                             </div>
                             <div>
                                 <span>R$ <?php echo somaPreco();?></span>
-                                <span>R$ 00,00</span>
+                                <?php if (somaPreco() >= 200){ ?>
+                                    <span>R$ 20,00</span>
+                                <?php }else{ ?>
+                                    <span>R$ 00,00</span>
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="resumo-total-sacola">
                             <span>Total</span>
-                            <span>R$ <?php echo somaPreco();?></span>
+                            <?php if (somaPreco() >= 200){ ?>
+                                <span>R$ <?php echo desconto();?></span>
+                            <?php }else{ ?>
+                                <span>R$ <?php echo somaPreco();?></span>
+                            <?php } ?>
                         </div>
                         <div class="botao-resumo-sacola">
                             <button>Confirmar</button>

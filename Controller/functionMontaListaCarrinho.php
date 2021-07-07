@@ -28,7 +28,7 @@ function somaPreco(){
     return substr($qtd, 0, 5);
 }
 
-/*function possuiDesconto(){
+function desconto(){
 
   if(somaPreco() >= 200){
     $formula = somaPreco() - 20;
@@ -36,7 +36,7 @@ function somaPreco(){
 
  return $formula;
 
-}*/
+}
 
 function montaListaCarrinho(){
 
