@@ -49,9 +49,13 @@ function montaListaProdutos($pesquisa){
 
     }else{
 
-        $lista .=  '<div class="mensagem">'
-                            .'<p>Desculpe, nenhuma pesquisa disponível! Tente buscar uma outra vez.</p>'
-                            .'<h3>Dica: tente pesquisar pelo nome do produto. :)</h3>'
+        $lista .=  '<div class="card">'
+                        .'<img src="banner.png">'
+                    .'</div>'
+                    .'<div class="mensagem">'
+                        .'<div style="background-image: url(banner.png); width:200px; height:200px;"></div>'
+                        .'<p>Desculpe, nenhuma pesquisa disponível! Tente buscar uma outra vez.</p>'
+                        .'<h3>Dica: tente pesquisar pelo nome do produto. :)</h3>'
                     .'</div>';
 
     }
