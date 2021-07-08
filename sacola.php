@@ -68,9 +68,9 @@
                         <div class="resumo-total-sacola">
                             <span>Total</span>
                             <?php if (somaPreco() >= 200){ ?>
-                                <span>R$ <?php echo desconto();?></span>
+                                <span id="total"><?php echo desconto();?></span>
                             <?php }else{ ?>
-                                <span>R$ <?php echo somaPreco();?></span>
+                                <span id="total"><?php echo somaPreco();?></span>
                             <?php } ?>
                         </div>
                         <div class="botao-resumo-sacola">
@@ -89,6 +89,22 @@
     <script>
         // TIRAR PRODUTO DA SACOLA
         function functionTirarSacola(id){
+
+            // Pega o SubTotal da tela
+            var subTotal = parseFloat(document.getElementById('subTotal').innerHTML);
+            // Pega o preço
+            var preco = parseFloat(document.getElementById('id'+id).innerHTML);
+            // Subtrai os valores
+            var somaTotal = preco - subTotal;
+
+            if(somaTotal < 0){
+                somaTotal = somaTotal * (-1);
+            }
+
+            // Devolve a soma para a tela
+            document.getElementById('subTotal').innerHTML=(Math.round(somaTotal * 100) / 100);
+
+            document.getElementById('total').innerHTML=(Math.round(somaTotal * 100) / 100);
 
             $.ajax({
                 
@@ -124,6 +140,25 @@
             // Devolve a soma para a tela
             document.getElementById('subTotal').innerHTML=(Math.round(somaSubTotal * 100) / 100);
 
+            document.getElementById('total').innerHTML=(Math.round(somaSubTotal * 100) / 100);
+
+            if(parseFloat(document.getElementById('total').innerHTML) > 200){
+
+                document.getElementById('total').innerHTML=(Math.round(somaSubTotal * 100) / 100)-20;
+
+            }
+
+            $.ajax({
+                
+                url: "ajax/load-sacola-quantidade.php?id="+id+"&quantidade="+numero,
+                success: function(result){
+                
+                },
+                error: function(){
+                    
+                }            
+            });
+
         }
 
         function removerProduto(id,preco){
@@ -148,6 +183,26 @@
                 var somaSubTotal = subTotal - preco;
                 // Devolve a soma para a tela
                 document.getElementById('subTotal').innerHTML=(Math.round(somaSubTotal * 100) / 100);
+
+                document.getElementById('total').innerHTML=(Math.round(somaSubTotal * 100) / 100);
+
+                if(parseFloat(document.getElementById('total').innerHTML) > 200){
+
+                    document.getElementById('total').innerHTML=(Math.round(somaSubTotal * 100) / 100)-20;
+
+                }
+
+                $.ajax({
+                
+                    url: "ajax/load-sacola-quantidade.php?id="+id+"&quantidade="+numero,
+                    success: function(result){
+                    
+                    },
+                    error: function(){
+                        
+                    }            
+                });
+
             }
 
         }

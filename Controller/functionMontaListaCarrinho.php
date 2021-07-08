@@ -1,5 +1,5 @@
 <?php
-
+/*
 function somaPreco(){
 
     $qtd = 0;
@@ -26,6 +26,37 @@ function somaPreco(){
 
     }
     return substr($qtd, 0, 5);
+}
+*/
+
+function somaPreco(){
+
+    $qtd = 0;
+
+    include('conexao.php');
+    $sql = "SELECT * FROM tb_Produto WHERE Carrinho = 'S';";
+    //var_dump($sql);
+    //die();
+
+    $result = mysqli_query($conn,$sql);
+    mysqli_close($conn);
+  
+    if (mysqli_num_rows($result) > 0) {	
+
+		$lista = array();
+		
+		while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+			array_push($lista,$linha);
+		}
+
+        $qtd = 0;
+
+        foreach ($lista as $campo) {			
+            $qtd += ($campo['Quantidade']*$campo['Preco']);            
+        }
+
+    }
+    return $qtd;
 }
 
 function desconto(){
@@ -65,7 +96,7 @@ function montaListaCarrinho(){
                         .'<div class="descricao-produto-sacola">'
                             .'<div class="texto-sacola">'
                                 .'<p>'.$campo['TituloProduto'].'</p>'
-                                .'<p id="id'.$campo['idProduto'].'">'.$campo['Preco'].'</p>'
+                                .'<p id="id'.$campo['idProduto'].'">'.($campo['Preco']*$campo['Quantidade']).'</p>'
                                 .'<p>'.$campo['Tamanho'].'</p>'
                                 .'<div class="quantidade-sacola">'
                                     .'<button onclick=removerProduto('.$campo['idProduto'].','.$campo['Preco'].')>-</button>'
