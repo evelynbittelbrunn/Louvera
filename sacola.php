@@ -44,7 +44,9 @@
             <div class="container-sacola">
                 <div class="produtos-sacola">
                     <h4>Minha sacola</h4>
-                    <?php echo montaListaCarrinho();?>
+                    <div class="sacola-produtos">
+                        <?php echo montaListaCarrinho();?>
+                    </div>
                 </div>
                 <div class="resumo-sacola">
                     <h4>Resumo da compra</h4>
@@ -55,7 +57,7 @@
                                 <span>Cupom</span>
                             </div>
                             <div>
-                                <span>R$ <?php echo somaPreco();?></span>
+                                <span id="subTotal"><?php echo somaPreco();?></span>
                                 <?php if (somaPreco() >= 200){ ?>
                                     <span>R$ 20,00</span>
                                 <?php }else{ ?>
@@ -78,5 +80,78 @@
                 </div>
             </div>
         </main>
+
+        <!-- JQUERY -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script>
+        // TIRAR PRODUTO DA SACOLA
+        function functionTirarSacola(id){
+
+            $.ajax({
+                
+                url: "ajax/load-sacola.php?id="+id,
+                success: function(result){
+                    $(".sacola-produtos").html(result);                    
+                },
+                error: function(){
+                    $(".sacola-produtos").html("OI");
+                    
+                }            
+            });
+
+        }
+
+        function adicionarProduto(id,preco){
+
+            // Pega o número do input text e grava na variável
+            var numero = document.querySelector("#produto"+id).value;
+            // A variável recebe mais um (click)
+            numero++;
+            // Devolve o valor para o input
+            document.querySelector("#produto"+id).value = numero;
+            // Multiplica o número pelo preço do produto
+            var precoTotal = numero*preco;
+            // Mostra o total 
+            document.getElementById('id'+id).innerHTML=(Math.round(precoTotal * 100) / 100);
+
+            // Pega o SubTotal da tela
+            var subTotal = parseFloat(document.getElementById('subTotal').innerHTML);
+            // Soma o valor do SubTotal com o preço do produto
+            var somaSubTotal = subTotal + preco;
+            // Devolve a soma para a tela
+            document.getElementById('subTotal').innerHTML=(Math.round(somaSubTotal * 100) / 100);
+
+        }
+
+        function removerProduto(id,preco){
+
+            var numero = document.querySelector("#produto"+id).value;
+
+            if(numero > 1){
+
+                numero--;
+
+                document.querySelector("#produto"+id).value = numero;
+
+                var valor = document.getElementById('id'+id).innerHTML;
+
+                var precoTotal = valor-preco;
+
+                document.getElementById('id'+id).innerHTML=(Math.round(precoTotal * 100) / 100);
+
+                // Pega o SubTotal da tela
+                var subTotal = parseFloat(document.getElementById('subTotal').innerHTML);
+                // Soma o valor do SubTotal com o preço do produto
+                var somaSubTotal = subTotal - preco;
+                // Devolve a soma para a tela
+                document.getElementById('subTotal').innerHTML=(Math.round(somaSubTotal * 100) / 100);
+            }
+
+        }
+
+    </script>
 </body>
 </html>

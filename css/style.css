@@ -383,6 +383,15 @@ main{
     padding-right: 5px;
 }
 
+.quantidade-sacola input[type="text"]{
+    border: none;
+    outline: 0;
+    font-family: inherit;
+    font-size: 0.9em;
+    text-align: center;
+    width: 30px;
+}
+
 .resumo-descricao-sacola{
     width: 100%;
     border: 1px solid #C0C0C0;
@@ -564,4 +573,16 @@ main{
     font-size: 1em;
     font-family: Montserrat;
     margin-top: 30px;
+}
+
+footer{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-info{
+    display: inline-block;
+    font-size: 0.9em;
+    text-align: center;
 }
