@@ -174,7 +174,7 @@ header svg{
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background-color: lightcoral;
+    background-color: #ffa295;
     margin-left: 10px;
 }
 
@@ -184,11 +184,19 @@ header svg{
 }
 
 .cores a:nth-child(3){
-    background-color: mediumpurple;
+    background-color: #FAD700;
 }
 
 .cores a:nth-child(4){
+    background-color: mediumpurple;
+}
+
+.cores a:nth-child(5){
     background-color: mediumseagreen;
+}
+
+.cores a:nth-child(6){
+    background-color: #FFC27D;
 }
 
 
@@ -276,14 +284,6 @@ main{
     font-size: 1.5em;
 }
 
-.fas{
-    color: #FF6347;
-}
-
-.far{
-    color: #F5F5DC;
-}
-
 #dois{
     color: #FF6347;
 }
@@ -365,6 +365,11 @@ main{
     padding-bottom: 15px;
 }
 
+.texto-sacola span{
+    display: inline-block;
+    padding-bottom: 15px;
+}
+
 .texto-sacola p:nth-child(1){
     padding-bottom: 15px;
     font-weight: 600;
@@ -376,6 +381,13 @@ main{
     background-color: transparent;
     height: 25px;
     width: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.quantidade-sacola button:hover{
+    background-color: black;
+    color: white;
 }
 
 .quantidade-sacola span{
@@ -441,7 +453,16 @@ main{
     text-transform: inherit;
     font-family: inherit;
     font-size: 1em;
+    cursor: pointer;
+    transition: 0.2s;
 }
+
+.botao-resumo-sacola button:hover{
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
+}
+
 
 /* MODAL */
 
@@ -573,6 +594,13 @@ main{
     font-size: 1em;
     font-family: Montserrat;
     margin-top: 30px;
+    transition: 0.2s;
+}
+
+.corpo-informacoes-produto-modal button:hover{
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
 }
 
 footer{
@@ -586,3 +614,4 @@ footer{
     font-size: 0.9em;
     text-align: center;
 }
+

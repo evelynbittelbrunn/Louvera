@@ -40,7 +40,7 @@ if($sql->rowCount() > 0){
 
                         <p>'.$value['Descricao'].'</p>
                         
-                        <button>Comprar</button>
+                        <button onclick="comprarProduto('.$value['idProduto'].')">Comprar</button>
                     </div>
                     
                 </div>

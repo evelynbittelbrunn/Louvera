@@ -95,8 +95,11 @@ function montaListaCarrinho(){
                         .'<img src="'.$campo['FotoExibicao'].'" alt="">'
                         .'<div class="descricao-produto-sacola">'
                             .'<div class="texto-sacola">'
-                                .'<p>'.$campo['TituloProduto'].'</p>'
-                                .'<p id="id'.$campo['idProduto'].'">'.($campo['Preco']*$campo['Quantidade']).'</p>'
+                                .'<a href="#" onclick=iniciaModal("modal-produto","'.$campo['idProduto'].'")>'
+                                    .'<p>'.$campo['TituloProduto'].'</p>'
+                                .'</a>'
+                                .'<span>R$&nbsp</span>'
+                                .'<span id="id'.$campo['idProduto'].'">'.($campo['Preco']*$campo['Quantidade']).'</span>'
                                 .'<p>'.$campo['Tamanho'].'</p>'
                                 .'<div class="quantidade-sacola">'
                                     .'<button onclick=removerProduto('.$campo['idProduto'].','.$campo['Preco'].')>-</button>'
@@ -112,7 +115,7 @@ function montaListaCarrinho(){
 
     }else{
 
-        echo 'Oi';
+        echo 'Não há produtos selecionados!';
     }
 
     return $carrinho;

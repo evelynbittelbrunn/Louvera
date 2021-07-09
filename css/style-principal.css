@@ -117,3 +117,63 @@
   .indicator {
       cursor: pointer;
   }
+
+  /*  INTEGRANTES  */
+
+#integrantes{
+    max-width: 90%;
+    margin: 50px auto 15px auto;
+}
+
+.integrantes-row{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    justify-content: space-between;
+}
+
+#integrantes h1{
+    color: black;
+    text-align: center;
+    line-height: 100px;
+}
+
+.caixa-integrantes{
+    /*padding: 20px 40px 10px 40px;*/
+    display: grid;
+}
+
+.caixa-integrantes h3{
+    color: black;
+    text-align: center;
+}
+
+.link{
+    display: flex;
+    justify-content: center;
+}
+
+.caixa-integrantes a{
+    padding: 0px;
+    border: none;
+    margin: 0;
+}
+/*
+.caixa-integrantes li{
+    color: black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 15px;
+    list-style: none;
+    font-style: italic;
+    font-size: 0.9em;
+    text-align: center;
+}
+*/
+
+.img-integrante{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    justify-self: center;
+}

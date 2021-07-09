@@ -28,7 +28,7 @@
                         <input type="text" name="" placeholder="Buscar por produto" id="">
                         <a href="#"><svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-search fa-w-16 fa-2x"><path fill="currentColor" d="M508.5 481.6l-129-129c-2.3-2.3-5.3-3.5-8.5-3.5h-10.3C395 312 416 262.5 416 208 416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c54.5 0 104-21 141.1-55.2V371c0 3.2 1.3 6.2 3.5 8.5l129 129c4.7 4.7 12.3 4.7 17 0l9.9-9.9c4.7-4.7 4.7-12.3 0-17zM208 384c-97.3 0-176-78.7-176-176S110.7 32 208 32s176 78.7 176 176-78.7 176-176 176z" class=""></path></svg></a>
                         -->
-                        <form method="POST" action="teste-catalogo.php" enctype="multipart/form-data">
+                        <form method="POST" action="catalogo.php" enctype="multipart/form-data">
                             <input type="text" name="nPesquisa" placeholder="Buscar por produto">
                         </form>
                         <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-search fa-w-16 fa-2x"><path fill="currentColor" d="M508.5 481.6l-129-129c-2.3-2.3-5.3-3.5-8.5-3.5h-10.3C395 312 416 262.5 416 208 416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c54.5 0 104-21 141.1-55.2V371c0 3.2 1.3 6.2 3.5 8.5l129 129c4.7 4.7 12.3 4.7 17 0l9.9-9.9c4.7-4.7 4.7-12.3 0-17zM208 384c-97.3 0-176-78.7-176-176S110.7 32 208 32s176 78.7 176 176-78.7 176-176 176z" class=""></path></svg>
@@ -41,7 +41,7 @@
             <div class="header-bottom">
                 <div class="header-categoria">
                     <a href=""><p>Novidades</p></a>
-                    <a href=""><p>Beleza</p></a>
+                    <a href="catalogo.php"><p>Beleza</p></a>
                     <a href=""><p>Perfumes</p></a>
                 </div>
             </div>
@@ -52,23 +52,29 @@
                 <option value="ORDER BY Preco DESC">Maior Preço</option>
                 <option value="ORDER BY Preco">Menor Preço</option>
             </select>
+            <!--
             <select name="" id="">
                 <option value="">Tamanho</option>
                 <option value="">Teste</option>
                 <option value="">Teste</option>
                 <option value="">Teste</option>
             </select>
+            -->
+            <!--
             <select name="" id="">
                 <option value="">Marca</option>
                 <option value="">Teste</option>
                 <option value="">Teste</option>
                 <option value="">Teste</option>
             </select>
+            -->
             <div class="cores">
                 <a href="#" class="filtro-cor" id="rosa"></a>
                 <a href="#" class="filtro-cor" id="azul"></a>
+                <a href="#" class="filtro-cor" id="amarelo"></a>
                 <a href="#" class="filtro-cor" id="roxo"></a>
                 <a href="#" class="filtro-cor" id="verde"></a>
+                <a href="#" class="filtro-cor" id="laranja"></a>
             </div>
         </div>
         <main>
@@ -139,54 +145,70 @@
 
     <script>
 
-    // FUNÇÃO FAVORITO
-    function functionFavorito(id) {
+        // FUNÇÃO FAVORITO
+        function functionFavorito(id) {
 
-        var icone = document.getElementById(id);
+            var icone = document.getElementById(id);
 
-        if(icone.classList[0] == "far"){
+            if(icone.classList[0] == "far"){
 
-            icone.style.color = "#FF6347";
+                icone.style.color = "#FF6347";
 
-            icone.classList.remove('far','fa-heart');
-            icone.classList.add('fas','fa-heart');
+                icone.classList.remove('far','fa-heart');
+                icone.classList.add('fas','fa-heart');
 
-            $.ajax({
-            
-                url: "ajax/load-favoritar.php?tipo=inserir&id="+id,
-                success: function(result){
-                    
-                },
-                error: function(){
-                    $(".catalogo").html("OI");
-                    
-                }            
-            });
+                $.ajax({
+                
+                    url: "ajax/load-favoritar.php?tipo=inserir&id="+id,
+                    success: function(result){
+                        
+                    },
+                    error: function(){
+                        $(".catalogo").html("OI");
+                        
+                    }            
+                });
 
-            console.log(icone.classList);
-        }else{
+                console.log(icone.classList);
+            }else{
 
-            icone.style.color = "#F5F5DC";
+                icone.style.color = "#F5F5DC";
 
-            icone.classList.remove('fas','fa-heart');
-            icone.classList.add('far','fa-heart');
+                icone.classList.remove('fas','fa-heart');
+                icone.classList.add('far','fa-heart');
 
-            $.ajax({
-            
-                url: "ajax/load-favoritar.php?tipo=remover&id="+id,
-                success: function(result){
-                    
-                },
-                error: function(){
-                    $(".catalogo").html("OI");
-                    
-                }            
-            });
+                $.ajax({
+                
+                    url: "ajax/load-favoritar.php?tipo=remover&id="+id,
+                    success: function(result){
+                        
+                    },
+                    error: function(){
+                        $(".catalogo").html("OI");
+                        
+                    }            
+                });
 
-            console.log(icone.classList);
+                console.log(icone.classList);
+            }
+
         }
 
-    }
+        function comprarProduto(id){
+
+            $.ajax({
+                
+                url: "ajax/load-comprar.php?id="+id,
+                success: function(result){
+                    
+                },
+                error: function(){
+                    $(".catalogo").html("OI");
+                    
+                }            
+            });
+
+        }
 
         // TRANSIÇÃO MENU 
         $(document).ready(function(){
