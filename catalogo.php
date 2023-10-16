@@ -1,6 +1,6 @@
 <?php
     include('Controller/functionModal.php');
-    include('Controller/geraPesquisaNovo.php');
+    //include('Controller/geraPesquisaNovo.php');
     include('Controller/functionMontaListaProdutos.php');
 ?>
 <!DOCTYPE html>

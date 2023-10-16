@@ -2,7 +2,7 @@
 
 require 'connection.php';
 
-include('functionModal');
+//include('functionModal');
 
 $tipo = $_GET['tipo'];
 $id   = $_GET['filtro'];

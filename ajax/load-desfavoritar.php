@@ -2,7 +2,7 @@
 
 require 'connection.php';
 
-include('functionModal');
+//include('functionModal');
 
 $id   = $_GET['id'];
 
