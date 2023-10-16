@@ -1,8 +1,13 @@
-
+<?php 
+	session_start();
+  if ($_SESSION['idTipo'] != 1) {
+      header('location: index.php');
+  }
+?>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Image Upload</title>
+<title>Cadastro de Produtos</title>
 </head>
 <body>
 <div id="content">

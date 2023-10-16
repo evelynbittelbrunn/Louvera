@@ -1,0 +1,97 @@
+.bg-louvera {
+    background-color: #563373;
+}
+
+.text-helena {
+    color: #b785e0;
+}
+
+.cadeado {
+    font-size: 60px;
+    color: #e1cdf1;
+}
+
+.btn-helena {
+    color: #fff;
+    background-color: #563373;
+    border-color: #563373;
+}
+
+.img-circle {
+    border-radius: 20px;
+}
+
+.foto-perfil img {
+    object-fit: contain;
+    width: 150px;
+    height: 150px;
+}
+
+.foto-perfil .foto {
+    margin-left: 0;
+    position: relative;
+    left: 0rem;
+}
+
+.foto-perfil .trocar-imagem {
+    background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.foto-perfil .trocar-imagem p {
+    margin-bottom: 0;
+    text-align: center;
+    font-size: .7rem;
+    font-weight: 700;
+    line-height: 90px;
+}
+
+.fonte-evento{
+    font-size: 12px;
+}
+
+.foto-perfil .trocar-imagem input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.foto-perfil:hover .trocar-imagem {
+    opacity: 1;
+}
+
+.mx-auto {
+    margin-left: auto !important; 
+}
+
+.foto {
+    margin-left: 0;
+    position: relative;
+    left: 0rem;
+}
+
+.bg-adm {
+    background-image: url(../img/header.png);
+    background-size: cover;
+}
+
+.bt-adm {
+    background-color: #FAEBD7;
+}
