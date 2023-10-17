@@ -1,11 +1,27 @@
 <?php
 
-function montaListaProdutos($pesquisa){
+function montaListaProdutos($pesquisa, $tipo = 1){
 
     include('conexao.php');
-    $sql = "SELECT * FROM tb_Produto WHERE TituloProduto LIKE '".$pesquisa."%' OR TituloProduto LIKE '%".$pesquisa."%'";
-    //var_dump($sql);
-    //die();
+
+    if($pesquisa !== "") {
+        $sql = "SELECT * FROM tb_Produto WHERE TituloProduto LIKE '".$pesquisa."%' OR TituloProduto LIKE '%".$pesquisa."%'";
+    } else {
+        switch ($tipo) {
+            case 1:
+                $sql = "SELECT * FROM tb_Produto";
+                break;
+            case 2:
+                $sql = "SELECT * FROM tb_Produto ORDER BY idProduto DESC LIMIT 8;";
+                break;
+            case 3:
+                $sql = "SELECT * FROM tb_Produto WHERE TituloProduto LIKE 'L''OCCITANE%' OR TituloProduto LIKE '%L''OCCITANE%' LIMIT 0, 25;";
+                break;
+        }
+    }
+
+    // var_dump($sql);
+    // die();
 
     $result = mysqli_query($conn,$sql);
     mysqli_close($conn);

@@ -40,46 +40,42 @@
             </div>
             <div class="header-bottom">
                 <div class="header-categoria">
-                    <a href=""><p>Novidades</p></a>
-                    <a href="catalogo.php"><p>Beleza</p></a>
-                    <a href=""><p>Perfumes</p></a>
+                    <a href="catalogo.php?type=2"><p>Novidades</p></a>
+                    <a href="catalogo.php?type=1"><p>Beleza</p></a>
+                    <a href="catalogo.php?type=3"><p>L'OCCITANE</p></a>
                 </div>
             </div>
         </header>
         <div class="filtro">
-            <select name="" id="preco">
-                <option value="">Ordenar por</option>
-                <option value="ORDER BY Preco DESC">Maior Preço</option>
-                <option value="ORDER BY Preco">Menor Preço</option>
-            </select>
-            <!--
-            <select name="" id="">
-                <option value="">Tamanho</option>
-                <option value="">Teste</option>
-                <option value="">Teste</option>
-                <option value="">Teste</option>
-            </select>
-            -->
-            <!--
-            <select name="" id="">
-                <option value="">Marca</option>
-                <option value="">Teste</option>
-                <option value="">Teste</option>
-                <option value="">Teste</option>
-            </select>
-            -->
-            <div class="cores">
-                <a href="#" class="filtro-cor" id="rosa"></a>
-                <a href="#" class="filtro-cor" id="azul"></a>
-                <a href="#" class="filtro-cor" id="amarelo"></a>
-                <a href="#" class="filtro-cor" id="roxo"></a>
-                <a href="#" class="filtro-cor" id="verde"></a>
-                <a href="#" class="filtro-cor" id="laranja"></a>
-            </div>
+            <?php
+                if(isset($_GET['type']) && $_GET['type'] === 1) {
+                    echo '
+                        <select name="" id="preco">
+                            <option value="">Ordenar por</option>
+                            <option value="ORDER BY Preco DESC">Maior Preço</option>
+                            <option value="ORDER BY Preco">Menor Preço</option>
+                        </select>
+                        <div class="cores">
+                            <a href="#" class="filtro-cor" id="rosa"></a>
+                            <a href="#" class="filtro-cor" id="azul"></a>
+                            <a href="#" class="filtro-cor" id="amarelo"></a>
+                            <a href="#" class="filtro-cor" id="roxo"></a>
+                            <a href="#" class="filtro-cor" id="verde"></a>
+                            <a href="#" class="filtro-cor" id="laranja"></a>
+                        </div>
+                    ';
+                }
+            ?>
         </div>
         <main>
             <div class="catalogo">
-                <?php echo montaListaProdutos($_POST['nPesquisa']);?>
+                <?php
+                    if (isset($_POST['nPesquisa'])) {
+                        echo montaListaProdutos($_POST['nPesquisa']);
+                    } elseif (isset($_GET['type'])) {
+                        echo montaListaProdutos("", $_GET['type']);
+                    }
+                ?>
             </div>
         </main>
     </div>
